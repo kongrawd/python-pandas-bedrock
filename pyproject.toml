@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pandas_bedrock"
-version = "0.0.1"
+version = "0.0.2"
 authors = [
   { name="kongrawd", email="45740187+kongrawd@users.noreply.github.com" },
 ]

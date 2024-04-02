@@ -11,7 +11,6 @@ class Client:
         
     def ask(self, prompt: str, dfs: Union[List[pandas.DataFrame], pandas.DataFrame]) -> str:
         _dumps_dfs = json.dumps(dfs.to_dict(orient='records')) if isinstance(dfs, pandas.DataFrame) else json.dumps([df.to_dict(orient='records') for df in dfs])
-        print(_dumps_dfs)
         _prompt = """\n\nHuman: Analyze the following dataframe(s) {} \
             \n\n{} \
             \n\nAssistant:""".format(_dumps_dfs, prompt)
@@ -26,6 +25,7 @@ class Client:
                 accept='application/json',
                 modelId=self.model
             ).get('body').read().decode('utf-8')
+            print(resp)
         except Exception as e:
             raise e
         return json.loads(resp).get('completion')

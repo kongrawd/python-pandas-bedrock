@@ -14,9 +14,9 @@ The following Foundation Models have been tested with this package:
 
 ```python
 import pandas
-from pandas_bedrock import BedrockPandas
+import pandas_bedrock
 
-client = BedrockPandas(model="anthropic.claude-v2:1")
+client = pandas_bedrock.Client(model="anthropic.claude-v2:1", region_name  = "us-east-1", profile_name = "your_aws_profile")
 
 df = pandas.DataFrame({
     'Name': ['Scooby Doo', 'Lassie', 'Snoopy', 'Pluto', 'Santa’s Little Helper'],
