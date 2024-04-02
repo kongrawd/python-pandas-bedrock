@@ -10,6 +10,23 @@ The following Foundation Models have been tested with this package:
 | --- | --- | --- |
 | Anthropic | Claude | anthropic.claude-v2:1 |
 
+## Usage
+
+```python
+import pandas
+from pandas_bedrock import BedrockPandas
+
+client = BedrockPandas(model="anthropic.claude-v2:1")
+
+df = pandas.DataFrame({
+    'Name': ['Scooby Doo', 'Lassie', 'Snoopy', 'Pluto', 'Santa’s Little Helper'],
+    'Breed': ['Great Dane', 'Collie', 'Beagle', 'Mixed', 'Greyhound'],
+    'Show': ['Scooby-Doo', 'Lassie', 'Peanuts', 'Disney', 'The Simpsons']
+})
+
+client.ask('What show is Snoopy from?', df)
+```
+
 ## Disclaimers
 
 This package is provided 'as is' and does not carry official support from any recognized entities. While there is no guarantee that it will be compatible with all Foundation Models, your contributions are highly encouraged! For additional information, please consult the Amazon Bedrock SDK documentation. Trademarks, such as company names, product names, and logos, belong to their respective owners.
