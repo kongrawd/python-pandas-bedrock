@@ -4,9 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pandas_bedrock"
-version = "0.0.2"
+version = "0.0.3"
 authors = [
-  { name="kongrawd", email="45740187+kongrawd@users.noreply.github.com" },
+    { name = "kongrawd", email = "45740187+kongrawd@users.noreply.github.com" },
 ]
 description = "Integrate Amazon Bedrock functionality with Pandas in Python."
 readme = "README.md"
@@ -17,12 +17,7 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
-dependencies = [
-    "pandas>=2.2.1",
-    "boto3>=1.34.60",
-]
+dependencies = ["pandas>=2.2.1", "boto3>=1.34.60", "botocore>=1.34.78"]
 
 [project.optional-dependencies]
-dev = [
-  "pytest>=8.1.1",
-]
+dev = ["pytest>=8.1.1"]
