@@ -5,7 +5,7 @@ import pandas_bedrock
 
 def test_client(target_env):
     client = pandas_bedrock.Client(
-        model=target_env['model_id'],
+        model_id=target_env['model_id'],
         region_name=target_env['aws_region_name'],
         profile_name=target_env['aws_profile_name']
         )
@@ -14,7 +14,7 @@ def test_client(target_env):
 
 def test_dataframe_ask(target_env):
     client = pandas_bedrock.Client(
-        model=target_env['model_id'],
+        model_id=target_env['model_id'],
         region_name=target_env['aws_region_name'],
         profile_name=target_env['aws_profile_name']
         )
@@ -23,13 +23,12 @@ def test_dataframe_ask(target_env):
         'Breed': ['Great Dane', 'Collie', 'Beagle', 'Mixed', 'Greyhound'],
         'Show': ['Scooby-Doo', 'Lassie', 'Peanuts', 'Disney', 'The Simpsons']
     })
-    resp = client.ask('explain', df)
-    print(resp)
+    resp = client.ask('Explain.', df)
     assert 'dog' in resp.lower()
 
 def test_dataframe_ask_list(target_env):
     client = pandas_bedrock.Client(
-        model=target_env['model_id'],
+        model_id=target_env['model_id'],
         region_name=target_env['aws_region_name'],
         profile_name=target_env['aws_profile_name']
         )
@@ -51,5 +50,4 @@ def test_dataframe_ask_list(target_env):
         ]
     })
     resp = client.ask('Explain the theory of relativity in simple terms.', [df1, df2])
-    print(resp)
     assert 'einstein' in resp.lower()
