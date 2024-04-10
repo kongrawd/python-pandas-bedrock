@@ -1,16 +1,20 @@
 # pandas_bedrock
 
+[![GitHub Repo stars](https://img.shields.io/github/stars/kongrawd/python-pandas-bedrock?style=social)](https://github.com/kongrawd/python-pandas-bedrock)
+
 This is a simple package to help you get started with [pandas](https://pandas.pydata.org/) and data analysis. It is designed to be used with the [Amazon Bedrock SDK](https://docs.aws.amazon.com/bedrock/latest/APIReference/welcome.html).
 
 ## Tested with Foundation Models on Amazon Bedrock
 
 The following Foundation Models have been tested with this package:
 
-| Provider | Model Name | Model ID | 
-| --- | --- | --- |
-| Anthropic | Claude | anthropic.claude-v2:1 |
+| Provider  | Model Name | Model ID              |
+| --------- | ---------- | --------------------- |
+| Anthropic | Claude     | anthropic.claude-v2:1 |
 
 ## Usage
+
+The modules is a Amazon Bedrock wrapper for Pandas dataframes and requires AWS credentials, ensure your AWS credentials are properly configured in your environment settings. The expenses incurred by running the model are charged to your AWS account.
 
 ```python
 import pandas

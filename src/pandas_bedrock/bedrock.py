@@ -2,6 +2,7 @@ from typing import TYPE_CHECKING, Optional
 
 import boto3
 from botocore.exceptions import BotoCoreError, ClientError, NoCredentialsError
+from botocore.config import Config
 
 from .models.base import Claude
 
@@ -17,7 +18,19 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 class BedrockProvider:
-    def __init__(self, model_id: str, api_name: str, **kwargs):
+    def __init__(self, model_id: str, api_name: str, client_config: Config = Config(read_timeout=300), **kwargs):
+        """
+        Initialize the BedrockProvider with the necessary parameters.
+
+        Args:
+            model_id (str): The unique identifier for the model.
+            api_name (str): The name of the API to be used.
+            client_config (Config, optional): Configuration for the boto3 client. Defaults to Config(read_timeout=300).
+            **kwargs: Arbitrary keyword arguments for boto3.Session.
+
+        Raises:
+            NoCredentialsError: If no AWS credentials are found.
+        """
         self.model_id = model_id
         self.api_name = api_name
         self.model_name = self.get_model_name(model_id)
@@ -27,7 +40,7 @@ class BedrockProvider:
         except NoCredentialsError:
             logger.error('No AWS credentials found. Please configure your AWS profile.')
             raise
-        self.client = self.session.client('bedrock-runtime')
+        self.client = self.session.client('bedrock-runtime', client_config)
 
     def get_model_name(self, model_id: str) -> str:
         try:
